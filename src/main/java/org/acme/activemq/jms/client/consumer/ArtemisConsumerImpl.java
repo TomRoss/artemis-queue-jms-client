@@ -105,7 +105,7 @@ public class ArtemisConsumerImpl implements ArtemisConsumer, Runnable {
 
         this.objectStoreManager = objectStoreManager;
 
-        this.connectionManager = new ConnectionMangerImpl(objectStoreManager);
+        this.connectionManager = new ConnectionManagerImpl(objectStoreManager);
 
         this.results = results;
 
@@ -281,7 +281,7 @@ public class ArtemisConsumerImpl implements ArtemisConsumer, Runnable {
 
                 } catch (JMSException jmsException) {
 
-                    LOG.errorf(jmsException, "Error while sending messages");
+                    LOG.errorf(jmsException, "Error while consuming messages");
 
                 }
 

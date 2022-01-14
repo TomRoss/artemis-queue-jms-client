@@ -41,7 +41,7 @@ import org.acme.activemq.jms.client.utils.CountDownLatchWrapper;
 import org.acme.activemq.jms.client.utils.ObjectStoreManager;
 import org.acme.activemq.jms.client.utils.ConnectionManager;
 import org.acme.activemq.jms.client.utils.JMSClientException;
-import org.acme.activemq.jms.client.utils.ConnectionMangerImpl;
+import org.acme.activemq.jms.client.utils.ConnectionManagerImpl;
 import org.acme.activemq.jms.client.utils.JMSMessageProperties;
 import org.acme.activemq.jms.client.utils.Helper;
 
@@ -136,7 +136,7 @@ public class ArtemisProducerImpl implements ArtemisProducer {
 
         this.objectStoreManager = objectStoreManager;
 
-        this.connectionManager = new ConnectionMangerImpl(objectStoreManager);
+        this.connectionManager = new ConnectionManagerImpl(objectStoreManager);
 
         this.results = results;
 
@@ -193,6 +193,8 @@ public class ArtemisProducerImpl implements ArtemisProducer {
                             textMessage.setText(getMessagePayLoad(messageSize));
 
                         }
+
+                        textMessage.setIntProperty(JMSMessageProperties.MESSAGE_INDX,i);
 
                         textMessage.setIntProperty(JMSMessageProperties.TOTAL_MESSAGE_COUNT, this.messageCount);
 

@@ -271,7 +271,7 @@ public class Settings {
 
    public static String getClientType(){
 
-      return System.getProperty(CLIENT_TYPE,null);
+      return System.getProperty(CLIENT_TYPE,"none");
 
    }
 

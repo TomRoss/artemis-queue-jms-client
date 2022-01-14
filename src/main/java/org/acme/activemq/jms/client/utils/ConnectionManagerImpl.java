@@ -33,8 +33,8 @@ import org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory;
 
 import org.acme.activemq.jms.client.Settings;
 
-public class ConnectionMangerImpl implements ConnectionManager {
-    private static final Logger LOG = Logger.getLogger(ConnectionMangerImpl.class);
+public class ConnectionManagerImpl implements ConnectionManager {
+    private static final Logger LOG = Logger.getLogger(ConnectionManagerImpl.class);
     private boolean useJndi = true;
     private Hashtable<String, String> env = null;
     private ObjectStoreManager objectStoreManager = null;
@@ -44,7 +44,7 @@ public class ConnectionMangerImpl implements ConnectionManager {
     private String threadName = Thread.currentThread().getName();
 
 
-    public ConnectionMangerImpl(ObjectStoreManager objectStoreManager) {
+    public ConnectionManagerImpl(ObjectStoreManager objectStoreManager) {
 
         this.objectStoreManager = objectStoreManager;
 

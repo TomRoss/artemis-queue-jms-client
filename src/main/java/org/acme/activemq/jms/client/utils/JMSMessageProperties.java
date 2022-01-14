@@ -6,6 +6,7 @@ public class JMSMessageProperties {
    public static final String UNIQUE_VALUE = "UniqueValue";
    public static final String PRODUCER_NAME = "ProducerName";
    public static final String PRODUCER_HOST = "ProducerHost";
+   public static final String MESSAGE_INDX = "MessageIndx";
    public static final String MESSAGE_CONSUMER_DELAY = "ConsumerDelay";
    public static final String MESSAGE_THROW_EXCEPTION = "ThrowException";
    public static final String JMSX_GROUP_ID = "JMSXGroupID";

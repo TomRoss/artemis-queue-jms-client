@@ -8,7 +8,7 @@
 
     <groupId>org.acme.artemis.jms</groupId>
     <artifactId>artemis-jms-queue-client</artifactId>
-    <version>7.8.1</version>
+    <version>1.0-SNAPSHOT</version>
 
     <properties>
 
@@ -26,6 +26,9 @@
         <!-- maven-compiler-plugin -->
         <compiler.pluging.version>3.8.1</compiler.pluging.version>
         <exec.plugin.version>1.6.0</exec.plugin.version>
+        <clean.plugin.version>3.1.0</clean.plugin.version>
+        <artemis.plugin.version>2.9.0.redhat-00018</artemis.plugin.version>
+        <dependency.plugin.version>3.1.1</dependency.plugin.version>
 
         <maven.compiler.target>11</maven.compiler.target>
         <maven.compiler.source>11</maven.compiler.source>
@@ -89,7 +92,7 @@
 
     <build>
 
-        <finalName>${project.artifactId}-${project.version}</finalName>
+        <finalName>${project.artifactId}</finalName>
 
         <plugins>
             <plugin>
@@ -142,9 +145,15 @@
             </plugin>
 
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>${clean.plugin.version}</version>
+            </plugin>
+
+            <plugin>
                 <groupId>org.apache.activemq</groupId>
                 <artifactId>artemis-maven-plugin</artifactId>
-                <version>2.3.0</version>
+                <version>2.9.0.redhat-00018</version>
                 <executions>
                     <execution>
                         <id>create</id>
@@ -152,7 +161,7 @@
                             <goal>create</goal>
                         </goals>
                         <configuration>
-                            <ignore>true</ignore>
+                            <ignore>${noServer}</ignore>
                             <home>${project.basedir}/target/server</home>
                         </configuration>
                     </execution>
@@ -193,18 +202,18 @@
                     </execution>
                 </executions>
                 <dependencies>
-                    <!--<dependency>
-                        <groupId>org.activemq.jms.queue.producer</groupId>
-                        <artifactId>artemis-jms-queue-producer</artifactId>
+                    <dependency>
+                       <groupId>org.acme.artemis.jms</groupId>
+                        <artifactId>artemis-jms-queue-client</artifactId>
                         <version>${project.version}</version>
-                    </dependency> -->
+                    </dependency>
                 </dependencies>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.1.1</version>
+                <version>${dependency.plugin.version}</version>
                 <executions>
                     <execution>
                         <id>copy-dependencies</id>
